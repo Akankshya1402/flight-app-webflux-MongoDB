@@ -1,0 +1,17 @@
+package com.flightapp.webfluxmongo.util;
+
+import org.springframework.stereotype.Component;
+
+import java.util.UUID;
+
+@Component
+public class PnrGenerator {
+
+    public String generate() {
+        return "PNR-" + UUID.randomUUID()
+                .toString()
+                .replace("-", "")
+                .substring(0, 8)
+                .toUpperCase();
+    }
+}
