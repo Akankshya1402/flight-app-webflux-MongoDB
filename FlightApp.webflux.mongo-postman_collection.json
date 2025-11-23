@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "Flight Booking App - WebFlux Mongo",
+    "_postman_id": "b93a1cc1-2d6f-4cf7-96a7-cbe4e87f12b4",
+    "description": "Complete API collection for Flight Booking WebFlux Mongo Application",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add Airline",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/airline",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "airline"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"A1\",\n  \"name\": \"Air India\",\n  \"logo\": \"airindia.png\",\n  \"active\": true\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Flight Inventory",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/airline/inventory",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "airline", "inventory"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"F1\",\n  \"airlineId\": \"A1\",\n  \"flightNumber\": \"AI-101\",\n  \"fromLocation\": \"DEL\",\n  \"toLocation\": \"BLR\",\n  \"departureTime\": \"2025-12-01T09:00:00\",\n  \"arrivalTime\": \"2025-12-01T11:00:00\",\n  \"price\": 5500,\n  \"availableSeats\": 120\n}"
+        }
+      }
+    },
+    {
+      "name": "Search Flights",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/search",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "search"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fromLocation\": \"DEL\",\n  \"toLocation\": \"BLR\",\n  \"journeyDate\": \"2025-12-01\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Book Ticket",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/booking/F1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "booking", "F1"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@test.com\",\n  \"numberOfSeats\": 2,\n  \"passengers\": [\n    { \"name\": \"Alice\", \"gender\": \"F\", \"age\": 25 },\n    { \"name\": \"Bob\", \"gender\": \"M\", \"age\": 26 }\n  ],\n  \"meal\": \"VEG\",\n  \"seatNumbers\": [\"12A\", \"12B\"]\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Ticket By PNR",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/ticket/PNR-12345678",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "ticket", "PNR-12345678"]
+        }
+      }
+    },
+    {
+      "name": "Booking History (Email)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/booking/history/user@test.com",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "booking", "history", "user@test.com"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Ticket",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:9090/api/v1.0/flight/booking/cancel/PNR-12345678",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "9090",
+          "path": ["api", "v1.0", "flight", "booking", "cancel", "PNR-12345678"]
+        }
+      }
+    }
+  ]
+}
